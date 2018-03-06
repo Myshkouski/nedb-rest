@@ -1,6 +1,6 @@
 import Koa from 'koa'
 
-import dbRouter from './dbRouter'
+import dbRouter from '~/routers/dbRouter'
 
 const app = new Koa()
 
