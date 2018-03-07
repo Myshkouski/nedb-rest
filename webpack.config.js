@@ -6,7 +6,6 @@ const __src = path.resolve(__approot, 'src')
 const __dist = path.resolve(__approot, 'dist')
 
 const config = {
-  stats: 'errors-only',
   target: 'node',
   devtool: 'source-map',
   externals: [
@@ -21,7 +20,7 @@ const config = {
     libraryTarget: 'commonjs2'
   },
   resolve: {
-    extensions: ['.js', '.json', '.yaml'],
+    extensions: ['.js', '.json', '.map', '.yaml', '.yml'],
     alias: {
       '~': __src,
       '~paths': path.resolve(__approot, '.rootrc')
@@ -30,7 +29,11 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.*\.?rc$/,
+        test: /\.ya?ml$/,
+        loader: 'json-loader'
+      },
+      {
+        test: /(\.?rc|json|map)$/,
         loader: 'json-loader'
       },
       {
