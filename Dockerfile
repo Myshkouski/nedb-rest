@@ -1,10 +1,18 @@
 FROM node
 
-WORKDIR /usr/app
-COPY . /usr/app
+ARG WORKDIR=/usr/src/
+ARG DB_PORT=27017
+ARG DB_PATH=/var/run/
+
+ENV DB_PORT $DB_PORT
+ENV DB_PATH $DB_PATH
+
+WORKDIR $WORKDIR
+
+COPY . $WORKDIR
 
 RUN npm install
 
-EXPOSE 27001
+EXPOSE $DB_PORT
 
-CMD [ "npm", "start" ]
+CMD ["npm", "start"]
