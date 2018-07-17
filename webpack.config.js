@@ -21,7 +21,7 @@ const config = {
   }
 }
 
-const server = Object.assign({
+const node = Object.assign({
   target: 'node',
   node: {
     __dirname: false
@@ -30,17 +30,18 @@ const server = Object.assign({
     require('webpack-node-externals')()
   ],
   entry: {
-    server: path.resolve(__src, 'server.js')
+    server: path.resolve(__src, 'server'),
+    'client.node': path.resolve(__src, 'client')
   }
 }, config)
 
-const client = Object.assign({
+const browser = Object.assign({
   entry: {
-    client: path.resolve(__src, 'client.js')
+    'client.browser': path.resolve(__src, 'client')
   }
 }, config)
 
 module.exports = [
-  server,
-  client
+  node,
+  browser
 ]
