@@ -1,6 +1,6 @@
 FROM node
 
-ARG WORKDIR=/usr/src/
+ARG WORKDIR=/home/node
 ARG DB_PORT=27017
 ARG DB_PATH=/var/run/
 
@@ -15,4 +15,4 @@ RUN npm install
 
 EXPOSE $DB_PORT
 
-CMD ["npm", "start"]
+ENTRYPOINT "npm start"
