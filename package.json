@@ -27,6 +27,10 @@
     "nedb-promise": "^2.0.1",
     "rapid.js": "^1.2.3"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Myshkouski/nedb-rest"
+  },
   "devDependencies": {
     "babel-loader": "^7.1.5",
     "babel-plugin-add-module-exports": "^0.2.1",
