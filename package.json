@@ -10,7 +10,7 @@
     "build": "webpack-cli --mode production",
     "prepublishOnly": "npm run build",
     "start": "node scripts/serve",
-    "start-dev": "supervisor scripts/serve",
+    "start-dev": "supervisor -w dist,lib,scripts scripts/serve",
     "cli": "node scripts/cli"
   },
   "bin": {
@@ -19,13 +19,11 @@
   "author": "Alexei Myshkouski",
   "license": "MIT",
   "dependencies": {
-    "async": "^2.6.1",
     "commander": "^2.16.0",
     "http-errors": "^1.6.2",
     "koa": "^2.5.2",
     "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",
-    "minimist": "^1.2.0",
     "nedb-promise": "^2.0.1",
     "rapid.js": "^1.2.3"
   },
