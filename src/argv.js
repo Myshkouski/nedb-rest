@@ -1,5 +1,5 @@
-import minimist from 'minimist'
+import commander from 'commander'
 
-const argv = minimist(process.argv.slice(2))
+commander.option('--db <dbPath>', 'path to store db files')
 
-export default argv
+export default commander.parse(process.argv)
