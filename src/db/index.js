@@ -1,5 +1,5 @@
 import Db from './nedbWrapper'
-import argv from './argv'
+import argv from '../argv'
 
 const db = new Db({
   path: argv.db || process.env.DB_PATH
