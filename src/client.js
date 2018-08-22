@@ -2,15 +2,17 @@ import Rapid from 'rapid.js'
 
 class NedbClient extends Rapid {
   constructor() {
-    let config = {}, urlScheme = 'http://', baseURL
+    let config = {},
+      urlScheme = 'http://',
+      baseURL
 
-    if(typeof arguments[0] == 'object') {
+    if (typeof arguments[0] == 'object') {
       config = arguments[0]
-      if(config.secure) {
+      if (config.secure) {
         urlScheme = 'https://'
       }
       baseURL = urlScheme + config.host || config.hostname + ':' + config.port
-    } else if(typeof arguments[0] == 'string') {
+    } else if (typeof arguments[0] == 'string') {
       baseURL = urlScheme + arguments[0]
     }
 
@@ -26,11 +28,13 @@ class NedbClient extends Rapid {
   }
 
   async method(name, ...args) {
-    if(!this.urlParams) {
+    if (!this.urlParams) {
       throw new Error('Database name parameter has not been set')
     }
 
-    const { data } = await this
+    const {
+      data
+    } = await this
       .append(name)
       .withParams({
         args
