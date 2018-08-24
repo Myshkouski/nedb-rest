@@ -16,7 +16,10 @@
   "bin": {
     "nedb-cli": "bin/nedb-cli.js"
   },
-  "author": "Alexei Myshkouski",
+  "author": {
+    "email": "alexeimyshkouski@gmail.com",
+    "name": "Alexei Myshkouski"
+  },
   "license": "MIT",
   "dependencies": {
     "commander": "^2.16.0",
