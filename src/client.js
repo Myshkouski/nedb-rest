@@ -1,6 +1,23 @@
-import Rapid from 'rapid.js'
+import Axios from 'axios'
 
-class NedbClient extends Rapid {
+class NedbCollection {
+  constructor(options) {
+    this._transport = options.transport
+    this._name = options.name
+  }
+
+  async method(method, ...args) {
+    const {
+      data
+    } = await this._transport.post(this._name + '/' + method, {
+      args
+    })
+
+    return data
+  }
+}
+
+class NedbClient {
   constructor() {
     let config = {},
       urlScheme = 'http://',
@@ -16,31 +33,18 @@ class NedbClient extends Rapid {
       baseURL = urlScheme + arguments[0]
     }
 
-    super({
+    this._transport = Axios.create({
       baseURL
     })
 
-    Object.assign(this.config, config)
+    this._config = config
   }
 
   collection(name) {
-    return this.append(name)
-  }
-
-  async method(name, ...args) {
-    if (!this.urlParams) {
-      throw new Error('Database name parameter has not been set')
-    }
-
-    const {
-      data
-    } = await this
-      .append(name)
-      .withParams({
-        args
-      }).post()
-
-    return data
+    return new NedbCollection({
+      transport: this._transport,
+      name
+    })
   }
 }
 
